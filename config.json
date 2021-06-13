@@ -1,0 +1,16 @@
+{
+  "owner": {
+    "ownerID": "239133004805570560"
+  },
+  "bot": {
+    "prefix": "!",
+    "token": "NTExMzYxNDM3OTE0ODkwMjQz.W-jgcw.p3ceJUQ4DhORLoDvTQr79nbi6Mo"
+  },
+  "database": {
+    "database": "",
+    "user": "",
+    "host": "",
+    "password": "",
+    "dialect": "mysql"
+  }
+}

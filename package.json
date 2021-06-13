@@ -1,0 +1,28 @@
+{
+  "name": "joshbotv2",
+  "version": "2.0.0",
+  "description": "multi-purpose fun moderation bot",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
+    "snekfetch": "^4.0.4",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "!avatar"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "wydpoke",
+  "license": "ISC"
+}
