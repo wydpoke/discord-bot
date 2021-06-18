@@ -1,11 +1,19 @@
 module.exports.run = async (bot, msg, args) => {
     let target = msg.mentions.members.first() || args[0]
-    let arg = msg.content.split(" ")
+    
+    args.shift()
 
     try {
-        let role = msg.guild.roles.cache.find(r => r.name.toLowerCase() === arg[2])
-        if(!role) return msg.channel.send('Role doesn\'t exist')
-        
+        let roleName = args.join(' ') || msg.guild.roles.find(r => r.name === args.join(' '))
+        let role = msg.guild.roles.cache.find((role) => {
+            return role.name.toLowerCase() === roleName.toLowerCase()
+        });
+
+        if(!role) { 
+            msg.channel.send('Role doesn\'t exist') 
+                .then(m => m.delete({timeout:3000}))
+        }
+
         await target.roles.remove(role)
         msg.channel.send(`Removed ${role} from ${target}`)
     } catch(e) {
