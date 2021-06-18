@@ -8,7 +8,7 @@ module.exports.run = async (bot, msg, args) => {
 
         target.roles.add(role)
         await msg.channel.send(`Successfully added ${role} to ${target}`)
-    } catch(e) {
+    } catch(e) { 
         msg.channel.send(`\`Error:\` \`\`\`js\n${e}\n\`\`\``)
     }
 }   
