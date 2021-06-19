@@ -1,13 +1,22 @@
 module.exports.run = async (bot, msg, args) => {
-    let target = msg.mentions.members.first() ||  args[0]
+    let target = msg.mentions.members.first() || args[0]
+    
+    args.shift()
 
     try {
-        let role = msg.guild.roles.cache.find(r => r.name === args[1])
-        if(!role) return msg.channel.send('Couldn\'t find that role..')
-        if(target.roles.cache.has(role.id)) return msg.channel.send('Target already has that role.')
+        let roleName = args.join(' ') || msg.guild.roles.find(r => r.name === args.join(' '))
+        let role = msg.guild.roles.cache.find((role) => {
+            return role.name.toLowerCase() === roleName.toLowerCase()
+        });
 
-        target.roles.add(role)
-        await msg.channel.send(`Successfully added ${role} to ${target}`)
+        if(!role) { 
+            msg.channel.send('Couldn\'t find that role')
+                .then(m => m.delete({timeout:3000}))                 
+        }
+
+        await target.roles.add(role)
+        msg.channel.send(`Added ${role} to ${target}`)
+            .then(m => m.delete({timeout: 3000}))
     } catch(e) {
         msg.channel.send(`\`Error:\` \`\`\`js\n${e}\n\`\`\``)
     }

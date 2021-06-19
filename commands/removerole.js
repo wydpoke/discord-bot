@@ -9,6 +9,7 @@ module.exports.run = async (bot, msg, args) => {
             return role.name.toLowerCase() === roleName.toLowerCase()
         });
 
+        if(target.highest >= msg.member.highest) return;
         if(!role) { 
             msg.channel.send('Role doesn\'t exist') 
                 .then(m => m.delete({timeout:3000}))
@@ -16,6 +17,7 @@ module.exports.run = async (bot, msg, args) => {
 
         await target.roles.remove(role)
         msg.channel.send(`Removed ${role} from ${target}`)
+            .then(m => m.delete({timeout: 3000}))
     } catch(e) {
         msg.channel.send(`\`Error:\` \`\`\`js\n${e}\n\`\`\``)
     }
